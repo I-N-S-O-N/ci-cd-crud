@@ -27,8 +27,8 @@ jobs:
             set -e
             cd /home/ubuntu/ci-cd-crud
 
-            PID=\$(lsof -t -i:3000) && kill -9 \$PID || echo "No process on port 3000"
-
+            npx kill-port 3000
+            
             git pull origin main
             npm install
 
