@@ -25,14 +25,14 @@ jobs:
         run: |
           ssh ${{ secrets.AWS_USER }}@${{ secrets.AWS_HOST }} << 'EOF'
             set -e
-            cd /home/ubuntu/express-app
+            cd /home/ubuntu/ci-cd-crud
 
             PID=\$(lsof -t -i:3000) && kill -9 \$PID || echo "No process on port 3000"
 
             git pull origin main
             npm install
 
-            screen -S express-app -X quit || echo "No previous screen session"
+            screen -S ci-cd-crud -X quit || echo "No previous screen session"
 
-            screen -dmS express-app npm start
+            screen -dmS ci-cd-crud npm start
           EOF
