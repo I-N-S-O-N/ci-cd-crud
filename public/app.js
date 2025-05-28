@@ -5,7 +5,7 @@ let currentCards = [];
 // Fetch all cards
 async function fetchCards() {
     try {
-        const response = await fetch('http://localhost:3000/api/cards');
+        const response = await fetch('http://13.60.73.69/api/cards');
         currentCards = await response.json();
         renderCards();
     } catch (error) {
@@ -61,7 +61,7 @@ async function addCard() {
     const list = document.getElementById('listType').value;
     
     try {
-        const response = await fetch('http://localhost:3000/api/cards', {
+        const response = await fetch('http://13.60.73.69/api/cards', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -86,7 +86,7 @@ async function addCard() {
 // Delete card
 async function deleteCard(cardId) {
     try {
-        await fetch(`http://localhost:3000/api/cards/${cardId}`, {
+        await fetch(`http://13.60.73.69/api/cards/${cardId}`, {
             method: 'DELETE'
         });
         currentCards = currentCards.filter(card => card._id !== cardId);
@@ -108,7 +108,7 @@ document.querySelectorAll('.cards-container').forEach(container => {
         const newList = container.id.split('-')[0];
         
         try {
-            const response = await fetch(`http://localhost:3000/api/cards/${cardId}`, {
+            const response = await fetch(`http://13.60.73.69/api/cards/${cardId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
